@@ -1,25 +1,70 @@
-// import { useState, useEffect } from "react";
-// import axios from "axios";
-import Header from "./components/header/Header";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import Gallery from "./components/gallery/Gallery";
+
+const PAGE_NUMBER = 1;
 
 function App() {
-  // const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState([]);
+  const [page, setPage] = useState(PAGE_NUMBER);
+  const [loading, setLoading] = useState(false);
+  const [initialRender, setInitialRender] = useState(true);
 
-  // useEffect(() => {
-  //   axios
-  //     .get("http://localhost:3001/products")
-  //     .then((response) => {
-  //       setProducts(response.data);
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error fetching products:", error);
-  //     });
-  // }, []);
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await axios.get(
+          `http://localhost:3001/items?page=${page}`
+        );
+
+        setProducts((prev) => {
+          return [...prev, ...response.data];
+        });
+        setLoading(false);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    // Fetch data only on initial render
+    if (!initialRender) {
+      fetchData();
+    }
+  }, [page, initialRender]);
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const handleScroll = async () => {
+    if (
+      window.innerHeight + document.documentElement.scrollTop + 1 >=
+      document.documentElement.scrollHeight
+    ) {
+      setLoading(true);
+      setPage((prev) => prev + 1);
+    }
+  };
+
+  useEffect(() => {
+    setInitialRender(false);
+  }, []);
+
+  console.log({ loading });
 
   return (
-    <main>
-      <Header />
-    </main>
+    <div className="app">
+      <h1>Products</h1>
+      <ul>
+        {products.map((p, i) => (
+          <li key={i}>
+            <div style={{ margin: "50px" }}>{p.name}</div>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }
 
