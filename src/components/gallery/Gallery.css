@@ -1,37 +1,20 @@
 .gallery {
   width: 100%;
+  padding: 20px;
 }
 
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(
-    auto-fill,
-    minmax(200px, 1fr)
-  ); /* Até 4 produtos por linha */
-  gap: 20px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 20px;
 }
 
 .grid-item {
-  border: 1px solid #ddd;
-  padding: 20px;
-  background-color: #f9f9f9;
-  text-align: center;
+  border: thin skyblue solid;
+  width: 100%;
 }
-/*  */
+
 .grid-item img {
-  max-width: 100%;
+  width: 100%;
   height: auto;
-  margin-bottom: 10px;
-}
-
-.name {
-  font-weight: bold;
-}
-
-.price {
-  color: green;
-}
-
-.rating {
-  color: orange;
 }

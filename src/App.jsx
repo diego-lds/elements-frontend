@@ -52,18 +52,10 @@ function App() {
     setInitialRender(false);
   }, []);
 
-  console.log({ loading });
-
   return (
     <div className="app">
       <h1>Products</h1>
-      <ul>
-        {products.map((p, i) => (
-          <li key={i}>
-            <div style={{ margin: "50px" }}>{p.name}</div>
-          </li>
-        ))}
-      </ul>
+      <Gallery products={products} />
     </div>
   );
 }

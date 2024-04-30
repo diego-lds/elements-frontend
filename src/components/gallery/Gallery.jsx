@@ -1,43 +1,38 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
-const PAGE_NUMBER = 1;
-function Gallery() {
-  const [products, setProducts] = useState([]);
-  const [page, setPage] = useState(PAGE_NUMBER);
-  const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    setTimeout(async () => {
-      const response = await axios.get(`http://locahost:3001/items?${page}`);
-
-      setProducts((prev) => {
-        return [...prev, ...response.data];
-      });
-      setLoading(false);
-    }, 1500);
-  }, [page]);
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const handleScroll = async () => {
-    if (
-      window.innerHeight + document.documentElement.scrollTop + 1 >=
-      document.documentElement.scrollHeight
-    ) {
-      setLoading(true);
-      setPage((prev) => prev + 1);
-    }
-  };
-
+import PropTypes from "prop-types";
+import "./Gallery.css";
+function Gallery({ products }) {
   return (
-    <div className="app">
-      <h1>Crypto Gallery</h1>
+    <div className="gallery">
+      <div className="grid-container">
+        {products.map((product, index) => (
+          <div key={index} className="grid-item">
+            <p>{product.name}</p>
+            <img
+              src={product.imageUrl}
+              alt={product.name}
+              width={100}
+              loading="lazy"
+            />
+            <p>{product.category}</p>
+            <p>R$ {product.price}</p>
+            <p>{product.rating}</p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
+
+Gallery.propTypes = {
+  products: PropTypes.arrayOf(
+    PropTypes.shape({
+      imageUrl: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      category: PropTypes.string.isRequired,
+      price: PropTypes.number.isRequired,
+      rating: PropTypes.number.isRequired,
+    })
+  ).isRequired,
+};
 
 export default Gallery;
