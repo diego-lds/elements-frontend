@@ -4,25 +4,42 @@ import Gallery from "./components/gallery/Gallery";
 import Filter from "./components/filter/Filter";
 import useInfiniteScroll from "./hooks/useInfiniteScroll";
 
-const PAGE_NUMBER = 1;
+const INITIAL_PAGE = 1;
 
 function App() {
   const [products, setProducts] = useState([]);
-  const [page, setPage] = useState(PAGE_NUMBER);
+  const [page, setPage] = useState(INITIAL_PAGE);
   const [loading, setLoading] = useState(false);
   const [initialRender, setInitialRender] = useState(true);
+  const [filters, setFilters] = useState({});
+
+  function handleFilter(params) {
+    setFilters(params);
+    setPage(INITIAL_PAGE); // Redefine a página para a primeira página ao aplicar filtros
+  }
 
   useEffect(() => {
     async function fetchData() {
       setLoading(true);
       try {
-        const response = await axios.get(
-          `http://localhost:3001/items?page=${page}`
-        );
+        let url = `http://localhost:3001/products?page=${page}`;
+        const filterParams = new URLSearchParams();
 
-        setProducts((prev) => {
-          return [...prev, ...response.data];
-        });
+        if (filters && Object.keys(filters).length > 0) {
+          Object.entries(filters).forEach(([key, value]) => {
+            if (value) {
+              filterParams.append(key, value);
+            }
+          });
+          url += `&${filterParams.toString()}`;
+        }
+        const response = await axios.get(url);
+
+        if (page === INITIAL_PAGE) {
+          setProducts(response.data);
+        } else {
+          setProducts((prev) => [...prev, ...response.data]);
+        }
         setLoading(false);
       } catch (error) {
         console.log(error);
@@ -32,23 +49,23 @@ function App() {
     if (!initialRender) {
       fetchData();
     }
-  }, [page, initialRender]);
+  }, [page, initialRender, filters]);
 
   useEffect(() => {
     setInitialRender(false);
   }, []);
 
-  const keepLoading = () => {
+  const keepLoadingData = () => {
     setPage((prevPage) => prevPage + 1);
   };
 
-  useInfiniteScroll(keepLoading);
+  useInfiniteScroll(keepLoadingData);
 
   return (
     <div className="app">
       {loading && <span>loading...</span>}
       <h1>Products</h1>
-      <Filter />
+      <Filter onFilter={handleFilter} />
       <Gallery products={products} />
     </div>
   );

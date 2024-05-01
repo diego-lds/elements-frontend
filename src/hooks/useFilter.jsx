@@ -2,9 +2,9 @@ import { useState } from "react";
 
 const useFilter = (onFilter) => {
   const [category, setCategory] = useState("");
-  const [minPrice, setMinPrice] = useState("");
-  const [maxPrice, setMaxPrice] = useState("");
-  const [rating, setRating] = useState("");
+  const [minPrice, setMinPrice] = useState(0.0);
+  const [maxPrice, setMaxPrice] = useState(0.0);
+  const [rating, setRating] = useState(0);
 
   const handleFilter = () => {
     const minPriceFloat = parseFloat(minPrice);
