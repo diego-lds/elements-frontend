@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Gallery from "./components/gallery/Gallery";
 import Filter from "./components/filter/Filter";
+import useInfiniteScroll from "./hooks/useInfiniteScroll";
 
 const PAGE_NUMBER = 1;
 
@@ -13,6 +14,7 @@ function App() {
 
   useEffect(() => {
     async function fetchData() {
+      setLoading(true);
       try {
         const response = await axios.get(
           `http://localhost:3001/items?page=${page}`
@@ -27,33 +29,24 @@ function App() {
       }
     }
 
-    // Fetch data only on initial render
     if (!initialRender) {
       fetchData();
     }
   }, [page, initialRender]);
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const handleScroll = async () => {
-    const { scrollHeight, scrollTop } = document.documentElement;
-
-    if (window.innerHeight + scrollTop + 1 >= scrollHeight) {
-      setLoading(true);
-      setPage((prev) => prev + 1);
-    }
-  };
-
-  useEffect(() => {
     setInitialRender(false);
   }, []);
 
+  const keepLoading = () => {
+    setPage((prevPage) => prevPage + 1);
+  };
+
+  useInfiniteScroll(keepLoading);
+
   return (
     <div className="app">
+      {loading && <span>loading...</span>}
       <h1>Products</h1>
       <Filter />
       <Gallery products={products} />
