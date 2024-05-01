@@ -19,9 +19,9 @@ const Filter = ({ onFilter }) => {
       <div>
         <select value={category} onChange={(e) => setCategory(e.target.value)}>
           <option value="">Selecione uma categoria</option>
-          <option value="chair">Cadeira</option>
-          <option value="table">Mesa</option>
-          <option value="monitor">Monitor</option>
+          <option value="chair">Cadeiras</option>
+          <option value="table">Mesas</option>
+          <option value="monitor">Monitores</option>
         </select>
       </div>
       <div>
