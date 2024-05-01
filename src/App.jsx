@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Gallery from "./components/gallery/Gallery";
+import Filter from "./components/filter/Filter";
 
 const PAGE_NUMBER = 1;
 
@@ -39,10 +40,9 @@ function App() {
   }, []);
 
   const handleScroll = async () => {
-    if (
-      window.innerHeight + document.documentElement.scrollTop + 1 >=
-      document.documentElement.scrollHeight
-    ) {
+    const { scrollHeight, scrollTop } = document.documentElement;
+
+    if (window.innerHeight + scrollTop + 1 >= scrollHeight) {
       setLoading(true);
       setPage((prev) => prev + 1);
     }
@@ -55,6 +55,7 @@ function App() {
   return (
     <div className="app">
       <h1>Products</h1>
+      <Filter />
       <Gallery products={products} />
     </div>
   );
