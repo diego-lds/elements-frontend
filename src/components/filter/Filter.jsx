@@ -22,7 +22,7 @@ const Filter = ({ onFilter }) => {
       <Select
         onChange={(e) => setCategory(e.target.value)}
         value={category}
-        placeholder={"Selecione uma categoria"}
+        placeholder={"Filtro Categorias"}
         options={[
           { value: "chair", label: "Cadeiras" },
           { value: "table", label: "Mesas" },
@@ -32,7 +32,7 @@ const Filter = ({ onFilter }) => {
       <Select
         onChange={(e) => setRating(e.target.value)}
         value={rating}
-        placeholder={"Selecione uma classificação"}
+        placeholder={"Filtro Avaliação"}
         options={[
           { value: 1, label: "1 estrela" },
           { value: 2, label: "2 estrela" },

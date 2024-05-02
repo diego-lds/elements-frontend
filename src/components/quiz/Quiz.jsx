@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from "react";
+import { useState } from "react";
+import PropTypes from "prop-types";
 import "./Quiz.css";
-import useQuiz from "../../hooks/useQuestions";
+import useQuestions from "../../hooks/useQuestions";
+import Button from "../common/button";
 
 const Quiz = ({ questions }) => {
   const [showModal, setShowModal] = useState(false);
@@ -13,12 +15,20 @@ const Quiz = ({ questions }) => {
     <>
       {!showModal && (
         <div className="floating-button" onClick={toggleModal}>
-          Botão
+          Quiz!
         </div>
       )}
       {showModal && <Modal onClose={toggleModal} questions={questions} />}
     </>
   );
+};
+Quiz.propTypes = {
+  questions: PropTypes.arrayOf(
+    PropTypes.shape({
+      question: PropTypes.string.isRequired,
+      answer: PropTypes.number.isRequired,
+    })
+  ).isRequired,
 };
 
 const Modal = ({ onClose, questions }) => {
@@ -29,29 +39,7 @@ const Modal = ({ onClose, questions }) => {
     handleAnswer,
     startQuiz,
     running,
-  } = useQuiz(questions);
-
-  // useEffect(() => {
-  //   let timer;
-  //   if (running) {
-  //     timer = setInterval(() => {
-  //       setCount((prevCount) => {
-  //         if (prevCount === 0) {
-  //           clearInterval(timer);
-  //           setRunning(false);
-  //           setCount(5);
-  //           return prevCount;
-  //         } else {
-  //           return prevCount - 1;
-  //         }
-  //       });
-  //     }, 1000);
-  //   }
-
-  //   return () => {
-  //     clearInterval(timer);
-  //   };
-  // }, [running]);
+  } = useQuestions(questions);
 
   return (
     <div className="modal-overlay">
@@ -64,16 +52,20 @@ const Modal = ({ onClose, questions }) => {
         <div className="modal-content">
           {running ? (
             <>
-              <div>{countdown}s</div>
-              <div>{currentQuestion.question}</div>
-              <button onClick={() => handleAnswer(1)}>Verdadeiro</button>
-              <button onClick={() => handleAnswer(0)}>Falso</button>
+              <div className="questions">
+                <div>{countdown}s</div>
+                <div>{currentQuestion.question}</div>
+              </div>
+              <div className="buttons">
+                <Button onClick={() => handleAnswer(1)}>Verdadeiro</Button>
+                <Button onClick={() => handleAnswer(0)}>Falso</Button>
+              </div>
             </>
           ) : (
             <>
-              <h4>Quiz de conhecimentos gerais</h4>
+              <h3>Quiz de conhecimentos gerais</h3>
               <p>
-                teste seus conhecimento em 30 segundos nesse quiz de perguntas e
+                Teste seus conhecimento em 30 segundos nesse quiz de perguntas e
                 respostas
               </p>
 
@@ -81,13 +73,23 @@ const Modal = ({ onClose, questions }) => {
                 {correctAnswers > 0 && "Respostas corretas: " + correctAnswers}
               </p>
 
-              <button onClick={() => startQuiz()}>Iniciar Quiz</button>
+              <Button onClick={() => startQuiz()}>Iniciar Quiz</Button>
             </>
           )}
         </div>
       </div>
     </div>
   );
+};
+
+Modal.propTypes = {
+  onClose: PropTypes.func.isRequired,
+  questions: PropTypes.arrayOf(
+    PropTypes.shape({
+      question: PropTypes.string.isRequired,
+      answer: PropTypes.number.isRequired,
+    })
+  ).isRequired,
 };
 
 export default Quiz;

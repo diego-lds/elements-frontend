@@ -1,12 +1,14 @@
 .select-container {
   position: relative;
+  display: flex;
+  min-width: 200px;
 }
 
 .select-container select {
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
-  width: 100%;
+  flex: 1;
   padding: 10px 30px 10px 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -32,4 +34,10 @@
   right: 10px;
   transform: translateY(-50%);
   pointer-events: none;
+}
+
+@media only screen and (max-width: 600px) {
+  .select-container select {
+    width: 100%;
+  }
 }

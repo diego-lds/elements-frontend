@@ -4,10 +4,17 @@
 
 .star {
   display: inline-block;
-  color: #ddd; /* Cor padrão das estrelas vazias */
+  color: #ddd;
   font-size: 1.5em;
 }
 
 .star.filled {
-  color: #f8c32d; /* Cor das estrelas preenchidas */
+  color: #f8c32d;
+}
+
+@media only screen and (max-width: 600px) {
+  .star-rating {
+    font-size: 2rem;
+    text-align: center;
+  }
 }

@@ -84,7 +84,7 @@ function App() {
   return (
     <div className="app">
       <Header />
-      <Container margin={"50px 200px"}>
+      <Container>
         <h2>Listagem de produtos</h2>
         <Filter onFilter={handleFilter} />
         <Gallery products={products} />

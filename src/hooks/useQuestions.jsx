@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
-const DURATION = 7;
-
-const useQuiz = (questions) => {
+const useQuestions = (questions) => {
+  const DURATION = 700;
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [correctAnswers, setCorrectAnswers] = useState(0);
   const [countdown, setCountdown] = useState(DURATION);
@@ -56,4 +55,4 @@ const useQuiz = (questions) => {
   };
 };
 
-export default useQuiz;
+export default useQuestions;

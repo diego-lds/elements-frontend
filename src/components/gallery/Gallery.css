@@ -1,5 +1,6 @@
 .gallery {
   width: 100%;
+  margin-top: 1rem;
 }
 
 .grid-container {
@@ -11,17 +12,17 @@
 
 .grid-item {
   width: 100%;
+  border: var(--secondary-color) solid 2px;
+  border-radius: 10px;
 }
 .grid-item h4 {
   margin-bottom: 10px;
-  width: 100%;
 }
 .grid-item-title {
-  min-height: 3rem;
+  min-height: 2rem;
 }
 .grid-item img {
   width: 100%;
-  height: auto;
 }
 
 .badge {
@@ -38,4 +39,45 @@
   font-weight: bolder;
   font-size: medium;
   margin: 10px 0;
+}
+
+/* Estilos para dispositivos móveis */
+@media only screen and (max-width: 600px) {
+  .gallery {
+    width: 100vw;
+    margin-top: 1rem;
+    text-align: center;
+  }
+
+  .grid-container {
+    grid-template-columns: repeat(1, 1fr); /* Altera para uma coluna */
+    grid-gap: 10px; /* Reduz o espaçamento entre os itens */
+  }
+
+  .grid-item {
+    border: none; /* Remove a borda dos itens */
+    border-radius: 0; /* Remove o arredondamento dos cantos */
+  }
+
+  .grid-item h4 {
+    margin-bottom: 5px; /* Reduz a margem inferior do título */
+    font-size: 1.2rem; /* Reduz o tamanho do título */
+  }
+
+  .grid-item-title {
+    min-height: auto; /* Remove a altura mínima do título */
+  }
+
+  .grid-item img {
+    width: 100%; /* Garante que a imagem ocupe toda a largura do contêiner */
+  }
+
+  .badge {
+    display: none; /* Esconde o badge */
+  }
+
+  .price {
+    margin: 5px 5px; /* Reduz a margem do preço */
+    font-size: 1rem; /* Reduz o tamanho do preço */
+  }
 }

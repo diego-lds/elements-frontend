@@ -11,12 +11,12 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   --primary-color: rgb(103, 52, 255);
+  --secondary-color: rgb(238, 238, 238);
 }
 
 body {
   margin: 0;
   display: flex;
-  place-items: center;
 }
 
 p {

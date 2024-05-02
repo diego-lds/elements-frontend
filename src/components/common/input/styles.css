@@ -1,9 +1,10 @@
 .input-container {
-  width: auto;
+  display: flex;
 }
 
 .input-field {
   padding: 10px;
+
   border: 1px solid #ccc;
   border-radius: 5px;
   background-color: #fff;
