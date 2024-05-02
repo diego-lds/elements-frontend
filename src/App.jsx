@@ -9,6 +9,7 @@ import Container from "./components/container/Container";
 import "./App.css";
 import useInfiniteScroll from "./hooks/useInfiniteScroll";
 
+const API = import.meta.env.VITE_API_URL;
 const INITIAL_PAGE = 1;
 
 function App() {
@@ -23,12 +24,11 @@ function App() {
     setFilters(params);
     setPage(INITIAL_PAGE);
   }
-
   useEffect(() => {
     async function fetchData() {
       setLoading(true);
       try {
-        let url = `http://localhost:3001/products?page=${page}`;
+        let url = `${API}/products?page=${page}`;
         const filterParams = new URLSearchParams();
 
         if (filters && Object.keys(filters).length > 0) {
@@ -68,7 +68,7 @@ function App() {
 
   const fetchQuestions = async () => {
     try {
-      const response = await fetch("http://localhost:3001/quiz");
+      const response = await fetch(`${API}/quiz`);
       if (!response.ok) {
         throw new Error("Erro ao buscar os dados");
       }
