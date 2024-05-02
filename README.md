@@ -1,8 +1,24 @@
-# React + Vite
+# ELEMENTS-FRONTEND
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Projeto de uma página de produtos utilizando ReactJs.
 
-Currently, two official plugins are available:
+## Rodando o projeto
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. Certifique-se de ter o Node.js instalado. Você pode baixá-lo em [nodejs.org](https://nodejs.org/).
+2. Clone os repositórios de backend e frontend:
+
+- git clone git@github.com:diego-lds/elements-backend.git
+- git clone git@github.com:diego-lds/elements-frontend.git
+
+4. Inicie o backend:
+
+- entrar na pasta /elements-backend
+- executar npm install para instalar as dependências.
+- executar npm run dev para iniciar o projeto na porta 3001
+
+5.  Inicie o frontend:
+
+- entrar na pasta /elements-frontend
+- executar npm install para instalar as dependências.
+- executar npm run dev para iniciar o projeto na porta 5173 (vite)
+- acessar pelo navegador 'http://localhost:5173'
