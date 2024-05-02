@@ -6,16 +6,36 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 20px;
-  background-color: aquamarine;
   width: 100%;
 }
 
 .grid-item {
-  border: thin skyblue solid;
   width: 100%;
 }
-
+.grid-item h4 {
+  margin-bottom: 10px;
+  width: 100%;
+}
+.grid-item-title {
+  min-height: 3rem;
+}
 .grid-item img {
   width: 100%;
   height: auto;
+}
+
+.badge {
+  display: inline-block;
+  padding: 2px 5px;
+  margin: 5px;
+  font-size: 12px;
+  color: #fff;
+  background-color: var(--primary-color);
+  border-radius: 15px;
+}
+
+.price {
+  font-weight: bolder;
+  font-size: medium;
+  margin: 10px 0;
 }

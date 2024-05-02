@@ -4,7 +4,6 @@ const Container = ({ children, margin }) => {
   const containerStyle = {
     margin: margin,
     padding: "20px",
-    border: "1px solid #ccc",
   };
 
   return <div style={containerStyle}>{children}</div>;

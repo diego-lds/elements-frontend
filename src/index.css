@@ -10,10 +10,16 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  --primary-color: rgb(103, 52, 255);
 }
 
 body {
   margin: 0;
   display: flex;
   place-items: center;
+}
+
+p {
+  margin: 0;
+  padding: 0;
 }

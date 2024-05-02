@@ -1,21 +1,24 @@
 import PropTypes from "prop-types";
 import "./Gallery.css";
+import StarRating from "../StartRating";
 function Gallery({ products }) {
   return (
     <div className="gallery">
       <div className="grid-container">
         {products.map((product, index) => (
           <div key={index} className="grid-item">
-            <p>{product.name}</p>
+            <div className="grid-item-title">
+              <h4>{product.name}</h4>
+            </div>
             <img
               src={product.imageUrl}
               alt={product.name}
               width={100}
               loading="lazy"
             />
-            <p>{product.category}</p>
-            <p>R$ {product.price}</p>
-            <p>{product.rating}</p>
+            <span className="badge">{product.category}</span>
+            <p className="price">R$ {product.price}</p>
+            <StarRating rating={product.rating} />
           </div>
         ))}
       </div>
