@@ -1,6 +1,9 @@
 import useFilter from "../../hooks/useFilter";
 import PropTypes from "prop-types";
 import "./Filter.css";
+import Select from "../common/select";
+import Input from "../common/input";
+import Button from "../common/button";
 const Filter = ({ onFilter }) => {
   const {
     category,
@@ -16,41 +19,41 @@ const Filter = ({ onFilter }) => {
 
   return (
     <div className="filter-container">
-      <div>
-        <select value={category} onChange={(e) => setCategory(e.target.value)}>
-          <option value="">Selecione uma categoria</option>
-          <option value="chair">Cadeiras</option>
-          <option value="table">Mesas</option>
-          <option value="monitor">Monitores</option>
-        </select>
-      </div>
-      <div>
-        <input
-          type="number"
-          value={minPrice}
-          placeholder="Preço Mínimo"
-          onChange={(e) => setMinPrice(e.target.value)}
-        />
-      </div>
-      <div>
-        <input
-          type="number"
-          placeholder="Preço Máximo:"
-          value={maxPrice}
-          onChange={(e) => setMaxPrice(e.target.value)}
-        />
-      </div>
-      <div>
-        <select value={rating} onChange={(e) => setRating(e.target.value)}>
-          <option value="">Selecione uma avaliação</option>
-          <option value="1">1 estrela</option>
-          <option value="2">2 estrelas</option>
-          <option value="3">3 estrelas</option>
-          <option value="4">4 estrelas</option>
-          <option value="5">5 estrelas</option>
-        </select>
-      </div>
-      <button onClick={handleFilter}>Filtrar</button>
+      <Select
+        onChange={(e) => setCategory(e.target.value)}
+        value={category}
+        placeholder={"Selecione uma categoria"}
+        options={[
+          { value: "chair", label: "Cadeiras" },
+          { value: "table", label: "Mesas" },
+          { value: "monitor", label: "Monitores" },
+        ]}
+      />
+      <Select
+        onChange={(e) => setRating(e.target.value)}
+        value={rating}
+        placeholder={"Selecione uma classificação"}
+        options={[
+          { value: 1, label: "1 estrela" },
+          { value: 2, label: "2 estrela" },
+          { value: 3, label: "3 estrela" },
+          { value: 4, label: "4 estrela" },
+          { value: 5, label: "5 estrela" },
+        ]}
+      />
+      <Input
+        value={minPrice}
+        type="number"
+        placeholder="Preço Mínimo"
+        onChange={(e) => setMinPrice(e.target.value)}
+      />
+      <Input
+        value={maxPrice}
+        type="number"
+        placeholder="Preço Máximo"
+        onChange={(e) => setMaxPrice(e.target.value)}
+      />
+      <Button onClick={handleFilter}>Filtrar</Button>
     </div>
   );
 };
