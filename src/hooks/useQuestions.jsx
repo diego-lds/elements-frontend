@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 const useQuestions = (questions) => {
-  const DURATION = 700;
+  const DURATION = 30;
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [correctAnswers, setCorrectAnswers] = useState(0);
   const [countdown, setCountdown] = useState(DURATION);
