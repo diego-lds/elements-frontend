@@ -10,7 +10,13 @@ function Gallery({ products }) {
             <div className="grid-item-title">
               <h4>{product.name}</h4>
             </div>
-            <img src={product.imageUrl} alt={product.name} loading="lazy" />
+            <img
+              src={product.imageUrl}
+              alt={product.name}
+              loading="lazy"
+              width={350}
+              height={350}
+            />
             <span className="badge">{product.category}</span>
             <p className="price">R$ {product.price}</p>
             <div className="rating">
