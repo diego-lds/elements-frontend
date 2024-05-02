@@ -1,12 +1,13 @@
 .gallery {
   width: 100%;
-  padding: 20px;
 }
 
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   grid-gap: 20px;
+  background-color: aquamarine;
+  width: 100%;
 }
 
 .grid-item {

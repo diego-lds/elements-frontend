@@ -3,7 +3,10 @@ import axios from "axios";
 import Gallery from "./components/gallery/Gallery";
 import Filter from "./components/filter/Filter";
 import Quiz from "./components/quiz/Quiz";
+import Header from "./components/header/Header";
+import Container from "./components/container/Container";
 
+import "./App.css";
 import useInfiniteScroll from "./hooks/useInfiniteScroll";
 
 const INITIAL_PAGE = 1;
@@ -18,7 +21,7 @@ function App() {
 
   function handleFilter(params) {
     setFilters(params);
-    setPage(INITIAL_PAGE); // Redefine a página para a primeira página ao aplicar filtros
+    setPage(INITIAL_PAGE);
   }
 
   useEffect(() => {
@@ -80,11 +83,13 @@ function App() {
 
   return (
     <div className="app">
-      {loading && <span>loading...</span>}
-      <h1>Products</h1>
-      <Filter onFilter={handleFilter} />
-      <Gallery products={products} />
-      <Quiz questions={questionsList} />
+      <Header />
+      <Container margin={"50px 200px"}>
+        <h2>Listagem de produtos</h2>
+        <Filter onFilter={handleFilter} />
+        <Gallery products={products} />
+        <Quiz questions={questionsList} />
+      </Container>
     </div>
   );
 }
