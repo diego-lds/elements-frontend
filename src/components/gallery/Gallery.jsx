@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import "./Gallery.css";
 import StarRating from "../StartRating";
-import LazyImage from "../common/lazyimage";
+import LazyLoad from "react-lazyload";
 function Gallery({ products }) {
   return (
     <div className="gallery">
@@ -11,12 +11,14 @@ function Gallery({ products }) {
             <div className="grid-item-title">
               <h4>{product.name}</h4>
             </div>
-            <LazyImage
-              src={product.imageUrl}
-              alt={product.name}
-              width={350}
-              height={350}
-            />
+            <LazyLoad height={1000} once>
+              <img
+                src={product.imageUrl}
+                alt={product.name}
+                width={350}
+                height={350}
+              />
+            </LazyLoad>
             <span className="badge">{product.category}</span>
             <p className="price">R$ {product.price}</p>
             <div className="rating">
