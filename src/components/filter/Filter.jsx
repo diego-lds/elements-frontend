@@ -1,10 +1,9 @@
-import useFilter from "../hooks/useFilter";
+import useFilter from "../../hooks/useFilter";
 import PropTypes from "prop-types";
-import Select from "./Select";
-import Input from "./Input";
-import Button from "./Button";
 import "./Filter.css";
-
+import Select from "../common/select";
+import Input from "../common/input";
+import Button from "../common/button";
 const Filter = ({ onFilter }) => {
   const {
     category,

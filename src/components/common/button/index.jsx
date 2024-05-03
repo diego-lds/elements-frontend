@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import "./Button.css";
+import "./styles.css";
 
 const Button = ({ onClick, children }) => {
   return (

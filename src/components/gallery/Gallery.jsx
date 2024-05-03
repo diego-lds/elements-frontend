@@ -1,8 +1,7 @@
 import PropTypes from "prop-types";
-import StarRating from "./StarRating";
-import LazyImage from "./LazyImage";
 import "./Gallery.css";
-
+import StarRating from "../StartRating";
+import LazyImage from "../common/lazyimage";
 function Gallery({ products }) {
   return (
     <div className="gallery">

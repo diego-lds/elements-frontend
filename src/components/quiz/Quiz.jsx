@@ -1,8 +1,8 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 import "./Quiz.css";
-import useQuestions from "../hooks/useQuestions";
-import Button from "./Button";
+import useQuestions from "../../hooks/useQuestions";
+import Button from "../common/button";
 
 const Quiz = ({ questions }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);

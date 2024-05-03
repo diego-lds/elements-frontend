@@ -1,10 +1,10 @@
 import { useEffect, useState, useCallback } from "react";
 import axios from "axios";
-import Gallery from "./components/Gallery";
-import Filter from "./components/Filter";
-import Quiz from "./components/Quiz";
-import Header from "./components/Header";
-import Container from "./components/Container";
+import Gallery from "./components/gallery/Gallery";
+import Filter from "./components/filter/Filter";
+import Quiz from "./components/quiz/Quiz";
+import Header from "./components/header/Header";
+import Container from "./components/container/Container";
 import useInfiniteScroll from "./hooks/useInfiniteScroll";
 import { buildUrlWithFilters } from "./utils/filtersUtils";
 import "./App.css";

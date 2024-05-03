@@ -1,7 +1,8 @@
 import PropTypes from "prop-types";
-import "./StarRating.css";
+import "./styles.css"; // Importando o arquivo CSS
 
 const StarRating = ({ rating }) => {
+  // Arredonda o número para baixo e converte para inteiro
   const roundedRating = Math.floor(rating);
 
   return (
