@@ -70,9 +70,10 @@ function App() {
   }, [fetchProducts, fetchQuestions]);
 
   return (
-    <main>
+    <main className="app">
       <Header />
       <Container>
+        <h2>Listagem de produtos</h2>
         <Filter onFilter={handleFilter} />
         <Gallery products={products} />
         <Quiz questions={questionsList} />

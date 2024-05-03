@@ -1,5 +1,6 @@
 .container {
-  margin: 10px 150px;
+  margin: 10px 10rem;
+  text-align: center;
 }
 
 @media only screen and (max-width: 600px) {

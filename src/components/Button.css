@@ -1,14 +1,16 @@
 .button {
   padding: 10px 20px;
+  font-size: 1rem;
   color: #fff;
   background-color: var(--primary-color);
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .button:hover {
-  background-color: #571092;
+  background-color: #0056b3;
 }
 
 .button:active {
