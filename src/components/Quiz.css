@@ -2,8 +2,8 @@
   position: fixed;
   bottom: 20px;
   right: 20px;
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   background-color: rgb(103, 52, 255);
   color: white;
   border-radius: 50%;
@@ -54,12 +54,11 @@
 .modal-content p {
   display: flex;
   color: antiquewhite;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 }
 
 .modal-content button {
   color: antiquewhite;
-  margin-bottom: 50px;
 }
 
 .buttons {

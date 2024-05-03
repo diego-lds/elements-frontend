@@ -1,8 +1,4 @@
 .header {
-  display: flex;
-  align-items: center;
-  width: 100vw;
-  justify-content: center;
-  max-height: 80px;
-  border-bottom: solid var(--primary-color) thin;
+  border-bottom: solid var(--primary-color) 3px;
+  padding-left: 20px;
 }
