@@ -4,8 +4,9 @@
   width: 100vw;
   justify-content: center;
   max-height: 80px;
-  border-bottom: solid lightgray thin;
+  border-bottom: solid var(--primary-color) thin;
 }
 
 .logo img {
+  height: 50px;
 }
