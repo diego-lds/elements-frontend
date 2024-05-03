@@ -1,6 +1,6 @@
 .gallery {
   width: 100%;
-  margin-top: 1rem;
+  margin-top: 16px;
 }
 
 .grid-container {
@@ -18,7 +18,7 @@
   margin-bottom: 10px;
 }
 .grid-item-title {
-  min-height: 2rem;
+  min-height: 20px;
 }
 .grid-item img {
   width: 100%;
@@ -41,7 +41,6 @@
   margin: 10px 0;
 }
 
-/* Estilos para dispositivos móveis */
 @media only screen and (max-width: 600px) {
   .gallery {
     width: 100vw;
@@ -50,34 +49,33 @@
   }
 
   .grid-container {
-    grid-template-columns: repeat(1, 1fr); /* Altera para uma coluna */
-    grid-gap: 10px; /* Reduz o espaçamento entre os itens */
+    grid-template-columns: repeat(1, 1fr); 
+    grid-gap: 10px; /
   }
 
   .grid-item {
-    border: none; /* Remove a borda dos itens */
-    border-radius: 0; /* Remove o arredondamento dos cantos */
+    border: none; 
+    border-radius: 0; 
   }
 
   .grid-item h4 {
-    margin-bottom: 5px; /* Reduz a margem inferior do título */
-    font-size: 1.2rem; /* Reduz o tamanho do título */
+    margin-bottom: 5px; 
+    font-size: 1.2rem; 
   }
 
   .grid-item-title {
-    min-height: auto; /* Remove a altura mínima do título */
+    min-height: auto;
   }
 
   .grid-item img {
-    width: 100%; /* Garante que a imagem ocupe toda a largura do contêiner */
+    width: 100%;
   }
 
   .badge {
-    display: none; /* Esconde o badge */
+    display: none; 
   }
 
   .price {
-    margin: 5px 5px; /* Reduz a margem do preço */
-    font-size: 1rem; /* Reduz o tamanho do preço */
+    margin: 5px 5px; 
   }
 }

@@ -3,7 +3,7 @@ import "./Header.css";
 function Header() {
   return (
     <header className="header">
-      <img alt="logotipo" src={logo} width={120} height={60} />
+      <img alt="logotipo" src={logo} width={200} height={80} />
     </header>
   );
 }
