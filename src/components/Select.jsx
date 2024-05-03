@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
-import "./styles.css";
+import "./Select.css";
+
 const Select = ({ value, options, onChange, placeholder }) => {
   return (
     <div className="select-container">
