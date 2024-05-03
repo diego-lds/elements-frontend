@@ -6,7 +6,3 @@
   max-height: 80px;
   border-bottom: solid var(--primary-color) thin;
 }
-
-.logo img {
-  height: 50px;
-}

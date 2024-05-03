@@ -5,23 +5,24 @@ import useQuestions from "../../hooks/useQuestions";
 import Button from "../common/button";
 
 const Quiz = ({ questions }) => {
-  const [showModal, setShowModal] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const toggleModal = () => {
-    setShowModal(!showModal);
+    setIsModalOpen(!isModalOpen);
   };
 
   return (
     <>
-      {!showModal && (
+      {!isModalOpen && (
         <div className="floating-button" onClick={toggleModal}>
           Quiz!
         </div>
       )}
-      {showModal && <Modal onClose={toggleModal} questions={questions} />}
+      {isModalOpen && <Modal onClose={toggleModal} questions={questions} />}
     </>
   );
 };
+
 Quiz.propTypes = {
   questions: PropTypes.arrayOf(
     PropTypes.shape({
@@ -65,12 +66,12 @@ const Modal = ({ onClose, questions }) => {
             <>
               <h3>Quiz de conhecimentos gerais</h3>
               <p>
-                Teste seus conhecimento em 30 segundos nesse quiz de perguntas e
-                respostas
+                Teste seus conhecimentos em 30 segundos neste quiz de perguntas
+                e respostas
               </p>
 
               <p>
-                {correctAnswers > 0 && "Respostas corretas: " + correctAnswers}
+                {correctAnswers > 0 && `Respostas corretas: ${correctAnswers}`}
               </p>
 
               <Button onClick={() => startQuiz()}>Iniciar Quiz</Button>
@@ -83,7 +84,7 @@ const Modal = ({ onClose, questions }) => {
 };
 
 Modal.propTypes = {
-  onClose: PropTypes.func.isRequired,
+  onClose: PropTypes.elementType.isRequired,
   questions: PropTypes.arrayOf(
     PropTypes.shape({
       question: PropTypes.string.isRequired,

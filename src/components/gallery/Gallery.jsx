@@ -7,7 +7,7 @@ function Gallery({ products }) {
     <div className="gallery">
       <div className="grid-container">
         {products.map((product, index) => (
-          <div key={index} className="grid-item">
+          <div key={product + index} className="grid-item">
             <div className="grid-item-title">
               <h4>{product.name}</h4>
             </div>
